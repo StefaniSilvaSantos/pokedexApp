@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Console } from 'console';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +24,7 @@ export class HomePage {
     nome: 'Ivysaur',
     foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/002.png',
     tipos: [
-      'Grass', 'Posion'
+      'Grass', 'Poison'
     ]
   },
   {
@@ -31,7 +32,7 @@ export class HomePage {
     nome: 'IVenusaur',
     foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/003.png',
     tipos: [
-      'Grass', 'Posion'
+      'Grass', 'Poison'
     ]
   },
   {
@@ -50,8 +51,69 @@ export class HomePage {
       'Fire'
     ]
   },
+  {
+    numero: '006',
+    nome: 'Charizard',
+    foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/006.png',
+    tipos: [
+      'Fire'
+    ]
+  },
+  {
+    numero: '007',
+    nome: 'Squirtle',
+    foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/007.png',
+    tipos: [
+      'Water'
+    ]
+  },
+  {
+    numero: '008',
+    nome: 'Wartortle',
+    foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/008.png',
+    tipos: [
+      'Water'
+    ]
+  },
+  {
+    numero: '009',
+    nome: 'Blastoise',
+    foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/009.png',
+    tipos: [
+      'Fire'
+    ]
+  },
+  {
+    numero: '010',
+    nome: 'Caterpie',
+    foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/010.png',
+    tipos: [
+      'Bug'
+    ]
+  },
   ];
 
-  constructor() {}
+  listaPokemonFiltrada = [];
+
+  constructor() {
+    this.retornarPokemon();
+  }
+
+  retornarPokemon(): void{
+    this.listaPokemonFiltrada = this.listaPokemon;
+  }
+
+  buscarPokemon(evento): void{
+    this.retornarPokemon(); //coloca todos os pokemons na lista filtrada
+
+    // pega o valor digitado no campo de busca
+    const busca: string = evento.target.value;
+
+    if(busca && busca.trim() !== ''){ //testa se tem alguma coisa no campo
+      this.listaPokemonFiltrada = this.listaPokemon.filter(pokemon =>
+        pokemon.nome.toLowerCase().includes(busca.trim().toLowerCase())
+    );
+    }
+  }
 
 }
