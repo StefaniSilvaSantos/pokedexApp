@@ -7,11 +7,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BulbasaurPage implements OnInit {
 
-  pokemon = {
+  pokemon = [
+    {
+      numero: '001',
+      nome: 'Bulbasaur',
+      foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png',
+      tipos: [
+        'Grass', 'Poison'
+      ],
+      fraquezas: [
+        'Fire', 'Physic', 'Flying', 'Ice'
+      ]
+    }
+  ];
 
-  };
+  listaPokemonFiltrada = [];
 
-  constructor() { }
+  constructor() {
+    this.retornarPokemon();
+  }
+
+  retornarPokemon(): void{
+    this.listaPokemonFiltrada = this.pokemon;
+  }
 
   ngOnInit() {
   }
