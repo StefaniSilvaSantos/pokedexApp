@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BulbasaurPage implements OnInit {
 
-  pokemon = [
+  listaPokemon = [
     {
       numero: '001',
       nome: 'Bulbasaur',
@@ -17,7 +17,11 @@ export class BulbasaurPage implements OnInit {
       ],
       fraquezas: [
         'Fire', 'Physic', 'Flying', 'Ice'
-      ]
+      ],
+      altura: 0.7,
+      peso: 6.9,
+      categoria: 'Semente',
+      habilidades: 'Overgrow'
     }
   ];
 
@@ -28,7 +32,7 @@ export class BulbasaurPage implements OnInit {
   }
 
   retornarPokemon(): void{
-    this.listaPokemonFiltrada = this.pokemon;
+    this.listaPokemonFiltrada = this.listaPokemon;
   }
 
   ngOnInit() {
