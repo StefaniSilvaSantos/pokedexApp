@@ -1,4 +1,6 @@
+import { DadosService } from './../services/dados.service';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -94,7 +96,7 @@ export class HomePage {
 
   listaPokemonFiltrada = [];
 
-  constructor() {
+  constructor(private dadosService: DadosService, private router: Router) {
     this.retornarPokemon();
   }
 
@@ -103,9 +105,9 @@ export class HomePage {
   }
 
   buscarPokemon(evento): void{
-    this.retornarPokemon(); //coloca todos os pokemons na lista filtrada
+    this.retornarPokemon(); // Coloca todos os pokemons na lista filtrada
 
-    // pega o valor digitado no campo de busca
+    // Pega o valor digitado no campo de busca
     const busca: string = evento.target.value;
 
     if(busca && busca.trim() !== ''){ //testa se tem alguma coisa no campo
@@ -115,4 +117,12 @@ export class HomePage {
     }
   }
 
+
+  abrirPokemon(pokemon: any): void {
+    // Salva o pokemon clicado no serviço de dados temporário.
+    this.dadosService.setDados('pokemon', pokemon);
+
+    // Navega até a página para exibir os dados.
+    this.router.navigateByUrl('/dados-pokemon');
+  }
 }
