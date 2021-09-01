@@ -1,14 +1,8 @@
+import { IPokemon } from './../../models/IPokemon.model';
 import { DadosService } from './../../services/dados.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-export interface IPokemon {
-  numero: string;
-  nome: string;
-  foto: string;
-  tipos: string[];
-
-}
 @Component({
   selector: 'app-dados-pokemon',
   templateUrl: './dados-pokemon.page.html',
@@ -17,6 +11,7 @@ export interface IPokemon {
 export class DadosPokemonPage implements OnInit {
 
   pokemon: IPokemon;
+  url = 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/';
 
   constructor(private dadosService: DadosService, private router: Router) { }
 
