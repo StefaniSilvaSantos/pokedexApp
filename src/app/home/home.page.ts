@@ -68,7 +68,7 @@ export class HomePage {
   }
 
   buscarPokemonAPI(offset = 0): void {
-    this.offset = this.offset;
+    this.offset = offset;
     this.listaPokemon = [];
     this.pokemonService.buscarPokemons(this.offset).subscribe(dadosRetorno =>{
       console.log(dadosRetorno); // Pega a lista de pokemons da API
